@@ -6,9 +6,11 @@ import (
 	"time"
 )
 
+// новый тип для возможного дальнейшего расширения функциональности программы
 type Task func()
 
-var Tasks []Task = []Task{
+// tasks - массив для примера задач, которые работает разное время
+var tasks []Task = []Task{
 	func() {
 		time.Sleep(100 * time.Millisecond)
 		fmt.Println("i'm task #1")
@@ -23,6 +25,7 @@ var Tasks []Task = []Task{
 	},
 }
 
+// Функция ChooseRandom возвращает случайную задачу из массива задач
 func ChooseRandom() func() {
-	return Tasks[rand.IntN(len(Tasks))]
+	return tasks[rand.IntN(len(tasks))]
 }
